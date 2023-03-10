@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/created-by: application-service
+    app.kubernetes.io/instance: test-component-pac-okoj
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/name: test-component-pac-okoj
+    app.kubernetes.io/part-of: build-suite-test-application-booi
+  name: test-component-pac-okoj
+  namespace: build-e2e-kqid-tenant
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: test-component-pac-okoj
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app.kubernetes.io/instance: test-component-pac-okoj
+    spec:
+      containers:
+      - image: quay.io/redhat-appstudio-qe/test-images
+        imagePullPolicy: Always
+        name: container-image
+        resources:
+          limits:
+            cpu: "1"
+            memory: 512Mi
+          requests:
+            cpu: 10m
+            memory: 50Mi
+status: {}
